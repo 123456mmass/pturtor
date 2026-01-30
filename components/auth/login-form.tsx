@@ -26,7 +26,7 @@ export function LoginForm() {
         callbackUrl: '/dashboard',
       })
       
-      if (result && 'error' in result && result.error) {
+      if ((result as any)?.error) {
         setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
       }
     } catch (error) {
