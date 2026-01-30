@@ -53,8 +53,8 @@ export async function POST(req: Request) {
 
     // Create checkout session
     const checkoutSession = await stripe.checkout.sessions.create({
-      customer: customerId || undefined,
-      payment_method_types: ['card', 'promptpay'],
+      customer_email: session.user.email!,
+      payment_method_types: ['card'],
       line_items: [
         {
           price_data: {
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
               name: course.title,
               images: course.thumbnail ? [course.thumbnail] : undefined,
             },
-            unit_amount: Math.round(course.price * 100),
+            unit_amount: Math.round((course.price as any) * 100),
           },
           quantity: 1,
         },
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
         userId: session.user.id,
         courseId: course.id,
       },
-    })
+    } as any)
 
     // Create pending purchase record
     await prisma.purchase.create({
