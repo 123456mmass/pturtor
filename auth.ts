@@ -9,7 +9,7 @@ export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma), // Disabled temporarily
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/login',
