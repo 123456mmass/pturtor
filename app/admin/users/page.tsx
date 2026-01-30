@@ -79,7 +79,7 @@ export default async function AdminUsersPage({ searchParams }: AdminUsersPagePro
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {users.map((user: typeof users[number]) => (
               <tr key={user.id} className="border-t">
                 <td className="p-4">
                   <div className="flex items-center gap-3">

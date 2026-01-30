@@ -26,18 +26,18 @@ export const {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         if (!credentials?.email || !credentials?.password) return null
 
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
+          where: { email: String(credentials.email) },
         })
 
-        if (!user) return null
+        if (!user || !user.password) return null
 
         const isValid = await bcrypt.compare(
-          credentials.password,
-          user.password || ''
+          String(credentials.password),
+          user.password
         )
 
         return isValid ? user : null
@@ -46,15 +46,15 @@ export const {
   ],
   callbacks: {
     async session({ session, token }) {
-      if (token) {
-        session.user.id = token.sub
-        session.user.role = token.role
+      if (token && session.user) {
+        session.user.id = token.sub || ''
+        session.user.role = (token.role as string) || 'USER'
       }
       return session
     },
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role
+        token.role = (user as any).role || 'USER'
       }
       return token
     },

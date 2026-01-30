@@ -126,7 +126,7 @@ export default async function AdminDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {stats.recentUsers.map((user) => (
+              {stats.recentUsers.map((user: typeof stats.recentUsers[number]) => (
                 <div key={user.id} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -157,7 +157,7 @@ export default async function AdminDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {stats.recentPurchases.map((purchase) => (
+              {stats.recentPurchases.map((purchase: typeof stats.recentPurchases[number]) => (
                 <div key={purchase.id} className="flex items-center justify-between">
                   <div>
                     <p className="font-medium text-sm">{purchase.course.title}</p>

@@ -61,7 +61,7 @@ export default async function AdminCoursesPage() {
             </tr>
           </thead>
           <tbody>
-            {courses.map((course) => (
+            {courses.map((course: typeof courses[number]) => (
               <tr key={course.id} className="border-t">
                 <td className="p-4">
                   <div className="flex items-center gap-3">

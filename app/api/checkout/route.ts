@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     }
 
     // Get or create Stripe customer
-    let customerId = session.user.stripeCustomerId
+    let customerId = (session.user as any).stripeCustomerId
     if (!customerId) {
       const customer = await stripe.customers.create({
         email: session.user.email!,
