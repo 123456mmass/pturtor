@@ -37,7 +37,7 @@ export async function GET(
     // Generate PDF if not exists
     const pdfBuffer = await generateCertificatePDF(certificate)
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(Buffer.from(pdfBuffer), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="certificate-${certificate.certificateNumber}.pdf"`,
