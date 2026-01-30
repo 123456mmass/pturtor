@@ -1,0 +1,33 @@
+# P-Turtor
+
+node_modules/
+.env
+.env.local
+.env.production
+.next/
+out/
+dist/
+
+# Database
+*.db
+*.db-journal
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+.vercel
