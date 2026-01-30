@@ -18,7 +18,7 @@ export async function requireRole(role: 'ADMIN' | 'INSTRUCTOR' | 'STUDENT') {
   if (!session) {
     redirect('/login')
   }
-  if ((session.user as any).role !== role && (session.user as any).role !== 'ADMIN') {
+  if (session.user.role !== role && session.user.role !== 'ADMIN') {
     redirect('/')
   }
   return session

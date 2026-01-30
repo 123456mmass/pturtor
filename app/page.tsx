@@ -4,19 +4,24 @@ import { Hero } from '@/components/hero'
 import { prisma } from '@/lib/prisma'
 
 async function getFeaturedCourses() {
-  const courses = await prisma.course.findMany({
-    where: { published: true, featured: true },
-    take: 6,
-    include: {
-      instructor: {
-        select: { name: true, image: true }
-      },
-      _count: {
-        select: { enrollments: true }
+  try {
+    const courses = await prisma.course.findMany({
+      where: { published: true, featured: true },
+      take: 6,
+      include: {
+        instructor: {
+          select: { name: true, image: true }
+        },
+        _count: {
+          select: { enrollments: true }
+        }
       }
-    }
-  })
-  return courses
+    })
+    return courses
+  } catch (error) {
+    console.error('Failed to fetch courses:', error)
+    return []
+  }
 }
 
 export default async function HomePage() {

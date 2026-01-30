@@ -26,12 +26,14 @@ export async function createOmiseCharge(
 export async function createOmiseSource(
   amount: number,
   currency: string,
-  type: 'promptpay' | 'internet_banking' | 'alipay'
+  type: 'promptpay' | 'internet_banking' | 'alipay',
+  phone?: string
 ) {
   return await omise.sources.create({
     type,
     amount,
     currency,
+    phone,
   })
 }
 
