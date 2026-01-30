@@ -30,7 +30,7 @@ export async function GET(
     }
 
     // Check if user owns this certificate or is admin
-    if (certificate.userId !== session.user.id && session.user.role !== 'ADMIN') {
+    if (certificate.userId !== session.user.id && (session.user as any).role !== 'ADMIN') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
