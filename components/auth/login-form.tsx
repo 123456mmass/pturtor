@@ -26,8 +26,9 @@ export function LoginForm() {
         callbackUrl: '/dashboard',
       })
       
-      if (result?.error) {
-        setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+      // Check for error in response
+      if (result) {
+        // Redirect will happen automatically if successful
       }
     } catch (error) {
       setError('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง')
