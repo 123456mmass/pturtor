@@ -72,7 +72,7 @@ export async function POST(req: Request) {
 
     // If course completed, generate certificate
     if (progressPercentage === 100) {
-      await generateCertificate(session.user.id, chapter.courseId)
+      await generateCertificate(session.user.id!, chapter.courseId)
     }
 
     return NextResponse.json({ success: true, progress: progressPercentage })
