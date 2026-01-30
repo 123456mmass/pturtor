@@ -66,7 +66,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   }
 
   const session = await getSession()
-  const isEnrolled = session ? await checkEnrollment(session.user.id, course.id) : false
+  const isEnrolled = session?.user ? await checkEnrollment(session.user.id!, course.id) : false
 
   const totalDuration = course.chapters.reduce((acc, ch) => acc + ch.duration, 0)
 
