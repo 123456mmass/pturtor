@@ -26,10 +26,8 @@ export function LoginForm() {
         callbackUrl: '/dashboard',
       })
       
-      // Check for error in response
-      if (result) {
-        // Redirect will happen automatically if successful
-      }
+      // signIn with redirect=true doesn't return anything
+      // It redirects directly on success or stays on error
     } catch (error) {
       setError('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง')
     } finally {
