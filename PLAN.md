@@ -26,10 +26,14 @@
 | Instructor Dashboard | สร้าง/แก้ไขคอร์ส | CRUD Course |
 | Video Player | Mux integration | ดูวิดีโอได้ |
 
-### ✅ Deliverables Phase 1
-- [ ] ระบบ Login/Register ทำงานได้
-- [ ] ดูคอร์สและเล่นวิดีโอได้
-- [ ] Instructor สร้างคอร์สได้
+### ✅ Deliverables Phase 1 - COMPLETED ✅
+- [x] ระบบ Login/Register ทำงานได้ (Email + Google)
+- [x] Database Schema + Seed data
+- [x] Landing Page พร้อม Course list
+- [x] Course Catalog + Detail pages
+- [x] Student Dashboard แสดง progress
+- [ ] Video Player (รอ Mux integration Phase 2)
+- [ ] Instructor Dashboard (รอ Phase 2)
 
 ---
 
