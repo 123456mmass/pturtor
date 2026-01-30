@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: pturtor
+      POSTGRES_PASSWORD: pturtor123
+      POSTGRES_DB: pturtor
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pturtor -d pturtor"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://pturtor:pturtor123@db:5432/pturtor
+      NEXTAUTH_URL: http://52.221.194.126:3000
+      NEXTAUTH_SECRET: pturtor-super-secret-key-change-in-production
+      # Add other env vars as needed
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
