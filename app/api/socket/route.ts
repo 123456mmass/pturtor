@@ -1,8 +1,7 @@
 import { Server as NetServer } from 'http'
 import { Server as SocketIOServer } from 'socket.io'
-import { NextApiRequest } from 'next'
 
-export type NextApiResponseServerIO = NextApiResponse & {
+export type NextApiResponseServerIO = any & {
   socket: any & {
     server: NetServer & {
       io: SocketIOServer
