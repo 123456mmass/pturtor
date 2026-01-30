@@ -23,8 +23,6 @@ const X = ({ className }: { className?: string }) => (
   </svg>
 )
 
-import { cn } from '@/lib/utils'
-
 const ToastProvider = ToastPrimitives.Provider
 
 const ToastViewport = React.forwardRef<
