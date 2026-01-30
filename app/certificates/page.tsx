@@ -24,6 +24,7 @@ async function getCertificates(userId: string) {
 
 export default async function CertificatesPage() {
   const session = await requireAuth()
+  if (!session?.user) return <div>Unauthorized</div>
   const certificates = await getCertificates(session.user.id!)
 
   return (
