@@ -90,7 +90,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <div>
             <h2 className="text-xl font-semibold mb-4">เนื้อหาคอร์ส</h2>
             <div className="border rounded-lg divide-y">
-              {course.chapters.map((chapter, index) => (
+              {course.chapters.map((chapter: typeof course.chapters[number], index: number) => (
                 <div key={chapter.id} className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-muted-foreground text-sm w-8">{index + 1}</span>
