@@ -23,7 +23,7 @@ export async function POST(
     }
 
     // Only instructor can update status
-    if (liveStream.instructorId !== session.user.id && session.user.role !== 'ADMIN') {
+    if (liveStream.instructorId !== session.user.id && (session.user as any).role !== 'ADMIN') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
