@@ -1,61 +1,190 @@
-# P-Turtor - แพลตฟอร์มเรียนออนไลน์ครบวงจร
+# P-Turtor Development Plan
 
-## 🎯 MVP Features (Phase 1)
+## 🎯 Overview
+แพลตฟอร์มเรียนออนไลน์ครบวงจรสำหรับตลาดไทย
+- **ระยะเวลารวม:** 10-12 สัปดาห์ (MVP → Production)
+- **ทีมแนะนำ:** 1-2 คน (Full-stack)
 
-### Core
-- [x] Project Setup
-- [ ] Database Schema (Prisma)
-- [ ] Authentication (NextAuth)
-- [ ] Landing Page
-- [ ] Course Catalog
-- [ ] Course Detail
-- [ ] Video Player
-- [ ] Student Dashboard
+---
 
-### Payment
-- [ ] Stripe Integration
-- [ ] Omise Integration (Thai)
-- [ ] Checkout Flow
-- [ ] Webhook Handlers
+## 📅 Phase 1: Foundation (สัปดาห์ที่ 1-2)
+**เป้าหมาย:** ระบบพื้นฐานพร้อมใช้งาน
 
-### Content
-- [ ] Video Upload (Mux)
-- [ ] PDF Upload
-- [ ] Progress Tracking
-- [ ] Quiz System
+### Week 1: Setup & Core
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Database Setup | PostgreSQL + Prisma + Migration | ตารางพร้อมใช้ |
+| Auth System | NextAuth (Google, Email) | Login/Register ได้ |
+| UI Components | shadcn/ui + Theme | Component library |
+| Landing Page | Hero, Course list, Footer | หน้าแรกสวยงาม |
 
-## 🗺️ Roadmap
+### Week 2: Course System
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Course Catalog | หน้ารวมคอร์ส, Filter, Search | ค้นหาคอร์สได้ |
+| Course Detail | Outline, Preview, Pricing | ดูรายละเอียดคอร์ส |
+| Instructor Dashboard | สร้าง/แก้ไขคอร์ส | CRUD Course |
+| Video Player | Mux integration | ดูวิดีโอได้ |
 
-### Phase 1 - MVP (4 weeks)
-- Basic course viewing
-- Payment system
-- Student dashboard
+### ✅ Deliverables Phase 1
+- [ ] ระบบ Login/Register ทำงานได้
+- [ ] ดูคอร์สและเล่นวิดีโอได้
+- [ ] Instructor สร้างคอร์สได้
 
-### Phase 2 - Engagement (2 weeks)
-- Quiz system
-- Progress tracking
-- Certificates
+---
 
-### Phase 3 - Community (2 weeks)
-- Live chat
-- Discussion forums
-- Notifications
+## 📅 Phase 2: Payment & Enrollment (สัปดาห์ที่ 3-4)
+**เป้าหมาย:** ระบบชำระเงินครบถ้วน
 
-### Phase 4 - Live (2 weeks)
-- Live streaming
-- Live chat during stream
-- Replay recording
+### Week 3: Payment Integration
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Stripe Setup | Credit card payment | รับบัตรเครดิต |
+| Omise Setup | PromptPay, Thai banks | รับพร้อมเพย์ |
+| Checkout Page | Cart, Summary, Payment form | หน้าจ่ายเงิน |
+| Webhook Handler | Payment confirmation | อัพเดทสถานะอัตโนมัติ |
 
-## 👥 User Roles
+### Week 4: Enrollment System
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Enrollment | Purchase course, Access control | ซื้อแล้วเข้าเรียนได้ |
+| Student Dashboard | My courses, Progress | ดูคอร์สที่ซื้อ |
+| Subscription | Monthly/Yearly plans | สมัครสมาชิกได้ |
+| Email Notifications | Welcome, Receipt, Reminder | ส่งอีเมลอัตโนมัติ |
 
-| Role | Permissions |
-|------|-------------|
-| **Student** | View courses, take quizzes, chat |
-| **Instructor** | Create courses, view analytics |
-| **Admin** | Full system management |
+### ✅ Deliverables Phase 2
+- [ ] จ่ายเงินด้วยบัตรและพร้อมเพย์ได้
+- [ ] ซื้อคอร์สแล้วเข้าเรียนได้ทันที
+- [ ] Subscription รายเดือน/ปี ทำงานได้
 
-## 💰 Pricing Models
+---
 
-1. **One-time Purchase** - ซื้อคอร์สเดียว
-2. **Subscription** - สมัครสมาชิกเข้าถึงทั้งหมด
-3. **Freemium** - บทเรียนฟรี + Premium
+## 📅 Phase 3: Content & Quiz (สัปดาห์ที่ 5-6)
+**เป้าหมาย:** ระบบเนื้อหาและแบบทดสอบ
+
+### Week 5: Content Management
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| PDF Upload | UploadThing integration | อัพโหลดเอกสาร |
+| Progress Tracking | Watch time, Completion % | ติดตามความก้าวหน้า |
+| Chapter Navigation | Next/Prev, Course outline | นำทางบทเรียน |
+| Mobile Responsive | Responsive design | ใช้บนมือถือได้ |
+
+### Week 6: Quiz System
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Quiz Creation | Multiple choice, True/False | สร้างแบบทดสอบ |
+| Quiz Taking | Timer, Submit, Auto-grade | ทำแบบทดสอบ |
+| Results | Score, Review answers | ดูผลคะแนน |
+| Passing Criteria | Pass/Fail, Retry limit | กำหนดเกณฑ์ผ่าน |
+
+### ✅ Deliverables Phase 3
+- [ ] อัพโหลด PDF/เอกสารประกอบได้
+- [ ] ทำ Quiz แล้วตรวจคะแนนอัตโนมัติ
+- [ ] ติดตามความก้าวหน้าการเรียน
+
+---
+
+## 📅 Phase 4: Certificate & Community (สัปดาห์ที่ 7-8)
+**เป้าหมาย:** ใบประกาศนียบัตรและระบบชุมชน
+
+### Week 7: Certificate System
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Certificate Template | Design PDF template | แบบใบประกาศ |
+| Auto Generation | Puppeteer → PDF | สร้าง PDF อัตโนมัติ |
+| Download/Share | Download, Social share | โหลด/แชร์ได้ |
+| Verification | QR code verification | ตรวจสอบความถูกต้อง |
+
+### Week 8: Community Features
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Discussion Forum | Q&A per chapter | ถามตอบรายบท |
+| Comments | Nested comments | ตอบกลับซ้อนได้ |
+| Notifications | In-app notifications | แจ้งเตือนกิจกรรม |
+| Search | Search discussions | ค้นหากระทู้ |
+
+### ✅ Deliverables Phase 4
+- [ ] ได้รับใบประกาศนียบัตร PDF อัตโนมัติ
+- [ ] ถามตอบในคอร์สได้
+- [ ] ระบบแจ้งเตือนทำงาน
+
+---
+
+## 📅 Phase 5: Live & Real-time (สัปดาห์ที่ 9-10)
+**เป้าหมาย:** Live streaming และแชทสด
+
+### Week 9: Live Streaming
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Mux Live | Live stream setup | ไลฟ์สดได้ |
+| Stream Scheduling | Schedule live sessions | ตารางไลฟ์ |
+| Viewer Count | Real-time viewer stats | ดูจำนวนคนดู |
+| Recording | Auto-record to VOD | บันทึกย้อนหลัง |
+
+### Week 10: Live Chat
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Socket.io Setup | Real-time connection | เชื่อมต่อ real-time |
+| Chat Room | Course chat room | แชทรายคอร์ส |
+| Moderation | Mute, Delete messages | จัดการแชท |
+| Emoji/Reactions | Message reactions | ตอบกลับด้วยอีโมจิ |
+
+### ✅ Deliverables Phase 5
+- [ ] Live streaming สดได้
+- [ ] แชทสดระหว่างเรียน
+- [ ] ดูย้อนหลังได้
+
+---
+
+## 📅 Phase 6: Polish & Launch (สัปดาห์ที่ 11-12)
+**เป้าหมาย:** ปรับแต่งและพร้อมเปิดตัว
+
+### Week 11: Admin & Analytics
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Admin Dashboard | User management, Reports | จัดการระบบ |
+| Analytics | Sales, Engagement metrics | ดูสถิติ |
+| Course Analytics | View count, Completion rate | วิเคราะห์คอร์ส |
+| Revenue Reports | Daily/Monthly revenue | รายงานรายได้ |
+
+### Week 12: Optimization
+| Task | รายละเอียด | ผลลัพธ์ |
+|------|-----------|---------|
+| Performance | Image optimization, Caching | โหลดเร็ว |
+| SEO | Meta tags, Sitemap | SEO ดี |
+| Security | Rate limiting, Validation | ปลอดภัย |
+| Testing | E2E tests, Load testing | ทดสอบครบ |
+
+### ✅ Deliverables Phase 6
+- [ ] Admin panel จัดการระบบได้
+- [ ] รายงานยอดขายและสถิติ
+- [ ] พร้อมเปิดใช้งานจริง
+
+---
+
+## 💰 Budget Estimate
+
+| รายการ | ค่าใช้จ่าย/เดือน |
+|--------|-----------------|
+| Vercel Pro | $20 |
+| PostgreSQL (Railway/Supabase) | $5-15 |
+| Mux (Video) | ใช้ตามการดู |
+| UploadThing | Free - $10 |
+| Stripe | 3% + ฿10/transaction |
+| Omise | 3.65% / transaction |
+| **รวมประมาณ** | **$30-50 + transaction fees** |
+
+---
+
+## 🚀 Quick Start Checklist
+
+ก่อนเริ่มแต่ละ Phase:
+- [ ] ตรวจสอบว่า Phase ก่อนหน้าเสร็จสมบูรณ์
+- [ ] อัพเดท .env ตามความต้องการ
+- [ ] รัน `npm run db:migrate` ถ้ามี schema ใหม่
+- [ ] Test บน local ก่อน deploy
+
+---
+
+**เริ่มจาก Phase ไหนดีครับ?** หรืออยากให้ผมลงรายละเอียด Phase ใดเป็นพิเศษ? 🚀
