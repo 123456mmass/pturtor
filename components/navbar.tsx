@@ -17,6 +17,9 @@ export async function Navbar() {
           <Link href="/courses" className="transition-colors hover:text-primary">
             คอร์สทั้งหมด
           </Link>
+          <Link href="/live" className="transition-colors hover:text-primary text-red-500">
+            🔴 Live
+          </Link>
           <Link href="/subscription" className="transition-colors hover:text-primary">
             สมัครสมาชิก
           </Link>
