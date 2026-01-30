@@ -24,7 +24,7 @@ async function getCertificates(userId: string) {
 
 export default async function CertificatesPage() {
   const session = await requireAuth()
-  const certificates = await getCertificates(session.user!.id)
+  const certificates = await getCertificates(session.user.id!)
 
   return (
     <div className="container py-8">
