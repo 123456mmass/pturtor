@@ -40,14 +40,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime? @map("email_verified")
-  image         String?
-  role          UserRole  @default(STUDENT)
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String    @unique
+  emailVerified      DateTime? @map("email_verified")
+  image              String?
+  role               UserRole  @default(STUDENT)
+  stripeCustomerId   String?   @map("stripe_customer_id")
+  omiseCustomerId    String?   @map("omise_customer_id")
+  password           String?
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
 
   // Auth
   accounts      Account[]

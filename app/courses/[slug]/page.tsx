@@ -5,6 +5,7 @@ import { prisma } from '@/lib/prisma'
 import { formatPrice, formatDuration } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { getSession } from '@/lib/auth'
+import { CheckoutButton } from '@/components/checkout/checkout-button'
 
 interface CoursePageProps {
   params: { slug: string }
@@ -156,11 +157,12 @@ export default async function CoursePage({ params }: CoursePageProps) {
                 </Button>
               </Link>
             ) : (
-              <Link href={`/checkout/${course.slug}`} className="block">
-                <Button className="w-full" size="lg">
-                  ซื้อคอร์สนี้
-                </Button>
-              </Link>
+              <CheckoutButton 
+                courseId={course.id} 
+                price={course.price}
+              >
+                ซื้อคอร์สนี้
+              </CheckoutButton>
             )}
 
             <div className="text-sm text-muted-foreground space-y-2">
