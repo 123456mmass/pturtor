@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     }
 
     // Get or create Stripe customer
-    let customerId = (session.user as any).stripeCustomerId
+    let customerId: string | undefined = (session.user as any).stripeCustomerId
     if (!customerId) {
       const customer = await stripe.customers.create({
         email: session.user.email!,
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
     // Create checkout session
     const checkoutSession = await stripe.checkout.sessions.create({
-      customer: customerId,
+      customer: customerId || undefined,
       payment_method_types: ['card', 'promptpay'],
       line_items: [
         {
