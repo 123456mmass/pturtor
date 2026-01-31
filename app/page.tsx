@@ -1,74 +1,38 @@
-import { Button } from '@/components/ui/button'
-import { CourseCard } from '@/components/course-card'
-import { Hero } from '@/components/hero'
-import { prisma } from '@/lib/prisma'
-
-async function getFeaturedCourses() {
-  try {
-    const courses = await prisma.course.findMany({
-      where: { published: true, featured: true },
-      take: 6,
-      include: {
-        instructor: {
-          select: { name: true, image: true }
-        },
-        _count: {
-          select: { enrollments: true }
-        }
-      }
-    })
-    return courses
-  } catch (error) {
-    console.error('Failed to fetch courses:', error)
-    return []
-  }
-}
-
-export default async function HomePage() {
-  const courses = await getFeaturedCourses()
-
+export default function Home() {
   return (
-    <>
-      <Hero />
-      
-      <section className="container py-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-3xl font-bold">คอร์สยอดนิยม</h2>
-            <p className="text-muted-foreground mt-2">
-              เรียนรู้จากคอร์สคุณภาพที่ได้รับความนิยมสูงสุด
-            </p>
-          </div>
-          <Button variant="outline" asChild>
-            <a href="/courses">ดูทั้งหมด</a>
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-muted py-16">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">10,000+</div>
-              <p className="text-muted-foreground">นักเรียนที่เรียนจบ</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">100+</div>
-              <p className="text-muted-foreground">คอร์สคุณภาพ</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <p className="text-muted-foreground">ผู้สอนมืออาชีพ</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <div style={{ 
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column',
+      alignItems: 'center', 
+      justifyContent: 'center',
+      fontFamily: 'system-ui, sans-serif',
+      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      color: 'white',
+      textAlign: 'center',
+      padding: '20px'
+    }}>
+      <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>P-Turtor</h1>
+      <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>แพลตฟอร์มเรียนออนไลน์</p>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <a href="/login" style={{
+          padding: '12px 24px',
+          background: 'white',
+          color: '#667eea',
+          textDecoration: 'none',
+          borderRadius: '8px',
+          fontWeight: 'bold'
+        }}>เข้าสู่ระบบ</a>
+        <a href="/courses" style={{
+          padding: '12px 24px',
+          background: 'transparent',
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '8px',
+          border: '2px solid white',
+          fontWeight: 'bold'
+        }}>ดูคอร์ส</a>
+      </div>
+    </div>
   )
 }
