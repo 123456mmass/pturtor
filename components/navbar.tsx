@@ -31,7 +31,7 @@ export async function Navbar() {
               <Link href="/dashboard">
                 <Button variant="ghost" size="sm">
                   <Icons.user className="mr-2 h-4 w-4" />
-                  {session.user.name || session.user.email}
+                  {session.user?.name || session.user?.email || 'User'}
                 </Button>
               </Link>
               <Link href="/api/auth/signout">
